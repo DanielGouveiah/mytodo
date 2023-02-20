@@ -2,7 +2,7 @@
   "git.enabled": true,
   "files.exclude": {
     "node_modules": true,
-    ".gitignore": true,
+    ".gitignore": false,
     "package.json": true,
     "package-lock.json": true,
     "public": true,
