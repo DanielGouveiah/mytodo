@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { UserStorage } from "./UserContext";
+import Create from "./Pages/Create";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import ToDo from "./Pages/ToDo/ToDo";
+import ProtectedRoute from "./user/ProtectedRoute";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex justify-center flex-col items-center max-w-xs m-auto md:max-w-2xl">
+      <BrowserRouter>
+        <UserStorage>
+          <Routes>
+            <Route
+              path="/"
+              element={<Home />}
+            />
+            <Route
+              path="/login"
+              element={<Login />}
+            />
+            <Route
+              path="/create"
+              element={<Create />}
+            />
+            <Route
+              path="/todo/:id"
+              element={
+                <ProtectedRoute>
+                  <ToDo />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </UserStorage>
+      </BrowserRouter>
     </div>
   );
 }
