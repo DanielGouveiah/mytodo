@@ -33,10 +33,10 @@ export const UserStorage = ({ children }) => {
   const [dark, setDark] = React.useState(null);
 
   React.useEffect(() => {
+    const scheme = window.matchMedia("(prefers-color-scheme: dark)");
+    setDark(scheme.matches);
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
-      if (event.matches) {
-        setDark(true);
-      }
+      setDark(true);
     });
   }, []);
 
