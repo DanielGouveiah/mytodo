@@ -30,6 +30,15 @@ export const UserStorage = ({ children }) => {
   });
   const db = getFirestore(firebaseApp);
 
+  const [dark, setDark] = React.useState(null);
+
+  React.useEffect(() => {
+    const result = window.matchMedia("(prefers-color-scheme: dark)");
+    if (result) {
+      setDark(true);
+    }
+  }, []);
+
   React.useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
@@ -71,7 +80,9 @@ export const UserStorage = ({ children }) => {
         })
         .catch((error) => {
           const errorMessage = error.message;
-          setError(errorMessage);
+          const errorCode = error.code;
+          console.log(errorMessage);
+          setError("Error: " + errorCode);
           setUser(null);
         })
         .finally(() => {
@@ -94,8 +105,8 @@ export const UserStorage = ({ children }) => {
           navigate(`/todo/${user.uid}`);
         })
         .catch((error) => {
-          const errorMessage = error.message;
-          setError(errorMessage);
+          const errorCode = error.code;
+          setError("Error: " + errorCode);
           setUser(null);
         })
         .finally(() => {
@@ -129,6 +140,7 @@ export const UserStorage = ({ children }) => {
         createAccount,
         userLogout,
         db,
+        dark,
       }}>
       {children}
     </UserContext.Provider>

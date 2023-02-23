@@ -17,17 +17,17 @@ const Item = ({ item, id, handleDelete, loading, handleCheck }) => {
 
   return (
     <li
-      className={`grid grid-cols-item  justify-between cursor-pointer items-center hover:shadow-md hover:shadow-stone-300 transition-shadow mb-4 ${
+      className={`grid grid-cols-item  justify-between cursor-pointer items-center hover:shadow-md hover:shadow-stone-300 transition-shadow mb-4  dark:hover:shadow-zinc-800 ${
         checked ? "bg-emerald-100" : "bg-stone-200"
-      } `}>
+      } ${checked ? "dark:bg-indigo-900" : "dark:bg-black"} `}>
       <div
         className="flex gap-4 items-center py-4 px-4"
         onClick={checkItem}
         id={id}>
         <div
           className={`w-4 h-4 bg-stone-800 rounded-xl ${checked ? "shadow-checked" : ""} ${
-            loading ? "pointer-events-none opacity-50" : ""
-          }`}>
+            checked ? "dark:shadow-checked-b" : ""
+          } ${loading ? "pointer-events-none opacity-50" : ""}`}>
           <input
             type="checkbox"
             value={checked}
@@ -37,7 +37,12 @@ const Item = ({ item, id, handleDelete, loading, handleCheck }) => {
           />
         </div>
 
-        <p className={`select-none ${checked ? "line-through" : ""}`}>{item.text}</p>
+        <p
+          className={`select-none max-w-[40ch] break-all dark:text-zinc-50 ${
+            checked ? "line-through" : ""
+          }`}>
+          {item.text}
+        </p>
       </div>
 
       <button

@@ -69,16 +69,16 @@ const ToDo = () => {
   return (
     <div className="flex flex-col w-full">
       <header className="flex items-center justify-between w-full py-4">
-        <h1 className="text-2xl justify-self-center text-center">
+        <h1 className="text-2xl justify-self-center text-center dark:text-zinc-50">
           Welcome, <span className="font-bold capitalize">{userName}</span>!
         </h1>
         <button
-          className="py-3 px-2 bg-red-600 text-white"
+          className=" py-2 md:py-3 px-2 bg-red-600 text-white hover:bg-red-500 transition-colors font-medium dark:text-zinc-50"
           onClick={userLogout}>
           Logout
         </button>
       </header>
-      <section className="h-[70vh]  overflow-y-scroll scrollbar-thumb-stone-200 scrollbar scrollbar-w-2 scrollbar-thumb-rounded-md pr-4">
+      <section className=" h-[68vh] md:h-[70vh]  overflow-y-scroll scrollbar-thumb-stone-200 scrollbar scrollbar-w-2 scrollbar-thumb-rounded-md pr-4 dark:scrollbar-thumb-indigo-900">
         <ul>
           {userData.data && userData.data.length ? (
             userData.data.map((item, index) => {
@@ -94,7 +94,7 @@ const ToDo = () => {
               );
             })
           ) : (
-            <p>You don't have anything commited!</p>
+            <p className="text-stone-400 dark:text-zinc-40  0">You have no saved tasks!</p>
           )}
         </ul>
       </section>
@@ -105,13 +105,13 @@ const ToDo = () => {
           type="text"
           value={itemText}
           onChange={({ target }) => setItemText(target.value)}
-          className={`bg-stone-200 px-4 py-2 border-2  outline-none  focus:bg-stone-50`}
+          className={`bg-stone-100 px-4 py-2 border-2  outline-none focus:bg-stone-50 focus:border-stone-300 border-r-0 transition-colors dark:bg-zinc-300`}
           ref={inputEl}
           required
         />
         {loading ? (
           <button
-            className="py-3 bg-emerald-600 text-white items-center flex justify-center disabled:opacity-50"
+            className="py-3 bg-emerald-600 text-white items-center flex justify-center disabled:opacity-50 dark:disabled:opacity-80 dark:bg-indigo-600"
             disabled>
             <CircleNotch
               size={32}
@@ -121,7 +121,7 @@ const ToDo = () => {
           </button>
         ) : (
           <button
-            className="py-3 bg-emerald-600 text-white items-center flex justify-center disabled:opacity-50"
+            className="py-3 bg-emerald-600 text-white items-center flex justify-center disabled:opacity-50 dark:disabled:opacity-80 dark:bg-indigo-600"
             disabled={itemText.length === 0}>
             <Polygon
               size={32}
