@@ -1,4 +1,5 @@
 # MyToDo
+![My ToDo Favicon](./public/favicon.svg "My ToDo") 
 
 Created by [Daniel Gouveia](https://www.linkedin.com/in/daniel-barbosa-425036220/).
 
