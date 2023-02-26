@@ -7,7 +7,7 @@ Created by [Daniel Gouveia](https://www.linkedin.com/in/daniel-barbosa-425036220
 
 My ToDo was created for improve my dev skills.
 This project was made with React, Tailwind and Google Firebase.
-That was my first time using Firebase Auth/Database and Tailwind.
+This was my first time using Firebase Auth/Database and Tailwind.
 So, I'm very glad with this project because, I've learned a lot of things
 from it even though it's simple.
 
