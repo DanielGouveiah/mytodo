@@ -10,7 +10,7 @@ import {
   signOut,
 } from "firebase/auth";
 
-export const UserContext = React.createContext();
+export const UserContext = React.createContext(null);
 
 export const UserStorage = ({ children }) => {
   const navigate = useNavigate();

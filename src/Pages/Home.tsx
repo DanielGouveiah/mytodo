@@ -9,8 +9,8 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center text-stone-900 flex-col pt-12 pb-8 md:pb-0 md:pt-6 dark:text-zinc-50">
-        <h1 className="text-6xl font-medium mb-4 dark:text-white">
+      <div className="flex items-center max-w-6xl justify-center text-stone-900 flex-col pt-12 pb-8 md:pb-0 md:pt-6 dark:text-zinc-50">
+        <h1 className="text-6xl font-medium mb-4  tracking-wider dark:text-white ">
           My ToDo<span className="text-emerald-500 dark:text-indigo-600">.</span>
         </h1>
         <img
@@ -18,14 +18,11 @@ const Home = () => {
           src={dark ? toDoImgB : toDoImgW}
           alt="To Do List"
         />
-        <p className="text-center text-1xl sm:text-2xl font-medium dark:text-zinc-200">
-          Welcome to My ToDo
-          <br />
-          This could be your first time here
-          <br />
-          So...
-          <br />
-          Create your new account!
+        <p className="text-center text-xl sm:text-2xl font-medium dark:text-zinc-300 tracking-wide">
+          <span className="block">Welcome to My ToDo</span>
+          <span className="block">This could be your first time here</span>
+          <span className="block">So...</span>
+          <span className="block">Create your new account!</span>
         </p>
 
         <div className="w-3xl flex flex-col items-center justify-center gap-1 mt-5">

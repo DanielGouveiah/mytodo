@@ -29,6 +29,7 @@ const Item = ({ item, id, handleDelete, loading, handleCheck }) => {
             checked ? "dark:shadow-checked-b" : ""
           } ${loading ? "pointer-events-none opacity-50" : ""}`}>
           <input
+            title="check"
             type="checkbox"
             value={checked}
             checked={checked}

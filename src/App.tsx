@@ -10,7 +10,7 @@ import Footer from "./Components/Footer";
 function App() {
   return (
     <div className="bg-amber-50  dark:bg-zinc-900 app box-border ">
-      <div className=" max-w-xs m-auto md:max-w-2xl flex flex-col items-center justify-between relative h-screen">
+      <div className=" max-w-2xl m-auto md:max-w-2xl flex flex-col items-center justify-between relative h-screen box-border">
         <BrowserRouter>
           <UserStorage>
             <Routes>

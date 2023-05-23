@@ -14,47 +14,40 @@ const ToDo = () => {
 
   async function handleContentAdd() {
     const userDataRef = doc(db, "users", user.uid);
-    setLoading(true);
+    const newContent = { text: itemText, check: false };
+    setUserData((prev) => [...prev, newContent]);
     await updateDoc(userDataRef, {
       "data": arrayUnion({ text: itemText, check: false }),
     });
-    getUserStore();
     setItemText("");
-    setLoading(false);
   }
 
   async function handleDelete(id) {
-    setLoading(true);
     const userDataRef = doc(db, "users", user.uid);
-    const newData = userData.data.filter((data, i) => i !== id);
-
+    const newData = userData.filter((data, i) => i !== id);
+    setUserData(newData);
     await updateDoc(userDataRef, {
       "data": newData,
     });
-
-    getUserStore();
-    setLoading(false);
   }
 
   async function handleCheck(id) {
-    setLoading(true);
     const userDataRef = doc(db, "users", user.uid);
-    const newData = [...userData.data];
+    const newData = [...userData];
     newData[id].check = !newData[id].check;
     await updateDoc(userDataRef, {
       "data": newData,
     });
-    setLoading(false);
   }
 
   const getUserStore = React.useCallback(async () => {
     setLoading(true);
     const userDocRef = doc(db, "users", user.uid);
     const userData = await getDoc(userDocRef);
-    setUserData(userData.data());
-    setUserName(userData.data().name);
+    if (userData.data().data.length) setUserData(userData.data().data);
+    if (userData.data().name.length) setUserName(userData.data().name);
     setLoading(false);
-  }, [db, user.uid]);
+  }, [db]);
 
   React.useEffect(() => {
     getUserStore();
@@ -80,8 +73,8 @@ const ToDo = () => {
       </header>
       <section className=" h-[68vh] md:h-[70vh]  overflow-y-scroll scrollbar-thumb-stone-200 scrollbar scrollbar-w-2 scrollbar-thumb-rounded-md pr-4 dark:scrollbar-thumb-indigo-900">
         <ul>
-          {userData.data && userData.data.length ? (
-            userData.data.map((item, index) => {
+          {userData && userData.length ? (
+            userData.map((item, index) => {
               return (
                 <Item
                   key={index}
